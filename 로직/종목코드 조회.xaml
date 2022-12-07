@@ -1,0 +1,243 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="종목코드_조회" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="I_STR_configchrome" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="I_STR_getcode" Type="InArgument(x:String)" />
+    <x:Property Name="I_DT_output" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="IO_STR_now" Type="InOutArgument(x:String)" />
+    <x:Property Name="IO_STR_1month" Type="InOutArgument(x:String)" />
+    <x:Property Name="IO_DT_output" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1108,2795</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>종목코드_조회_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="36">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="102">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="종목코드_조회" sap:VirtualizedContainerService.HintSize="1012,2686" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="STR" />
+      <Variable x:TypeArguments="x:String" Name="STR_now" />
+      <Variable x:TypeArguments="x:String" Name="STR_1month" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Config 파일에 있는 구글 url을 가져와 열어준다" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: 새 탭_구글 검색창" sap:VirtualizedContainerService.HintSize="950,2564" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="916,2307" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="STR_1month_1" />
+              <Variable x:TypeArguments="x:String" Name="STR_1month_2" />
+              <Variable x:TypeArguments="x:String" Name="STR_1month_3" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'combo box'_종목코드 검색" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="854,227" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Text="[I_STR_getcode + &quot;[k(enter)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="687, 454, 562, 44" DesignTimeScaleFactor="1" FriendlyName="'combo box'" FullSelectorArgument="&lt;ctrl name='새 탭' role='document' /&gt;&lt;ctrl name='Google 검색 또는 URL 입력' role='combo box' /&gt;" FuzzySelectorArgument="&lt;ctrl name='새 탭' role='document' /&gt;&lt;ctrl name='Google 검색 또는 URL 입력' role='combo box' automationid='' /&gt;" Guid="00de2579-1e6f-411f-b079-e451fa67b6c3" ImageBase64="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" InformativeScreenshot="5eb1b4ec684c2148b87baa63fc0c1a4b.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='새 탭 - Chrome' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V1" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="854,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[I_STR_getcode + &quot;검색&quot;]" />
+            <uix:NCheckState DisplayName="Check App State '1개월'" sap:VirtualizedContainerService.HintSize="854,1776" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Timeout="2" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="타겟이 나타남" sap:VirtualizedContainerService.HintSize="400,1550" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick sap2010:Annotation.AnnotationText="검색결과가 없을경우 다음 액티비티가 진행되도록 오류 발생 시 계속 진행을 'true'로 놓아줌" ClickType="Single" ContinueOnError="True" DisplayName="Click '1개월'" sap:VirtualizedContainerService.HintSize="338,208" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=001140&amp;oq=001140&amp;aqs=chrome..69i57j0i546l3.940j0j15&amp;sourceid=chrome&amp;ie=UTF-8" DesignTimeRectangle="356, 566, 36, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'1개월'" FullSelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' type='' class='' check:innerText='1개월' /&gt;" Guid="5d4d6a72-8245-4f05-90e8-6db632811379" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAaCAYAAADFTB7LAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEeSURBVFhH7ZPbCYMwFIadw026jxu4Q8FHV3AAB3AG31ygj4YGwYIUSttTT42X2MQkTQqB+kEgXk7y5fcYgOfsgrbsgrb8i2AHeUIgJ/2UNBAlDeDUiIpCKKgzE8RF4pobUdH1D3QE8R2+lhMyExwWSyt2KYEURFuwzMbDzGD9JKUvOJ9UJVhmTMpGUJYogxOcCjIKqVKw7d+hUL7nasHlwYVCOgmSomEb4ubbgvPnRXQEFZj1oEIQJab0kFU63EaC5NYja10Kip6ZJLhsDTWGgsP9dbPrCuKPIkxwHHYJyqQRBz0oqfuuBz/wIsEt9AX11xyQCJriKMGYrbHAkeDv2AVt8V+QXB5s6hcneofr7QmB+G/yYxyOZ78Fw7iGF5ikCqZHZoSkAAAAAElFTkSuQmCC" InformativeScreenshot="d979841c3b306a4e2ed5832f48c0ee7b.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_STR_getcode+&quot; - Google 검색' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                  <uix:NGetText sap2010:Annotation.AnnotationText="검색결과가 없을경우 다음 액티비티가 진행되도록 오류 발생 시 계속 진행을 'true'로 놓아줌" ContinueOnError="True" DisplayName="Get Text_현재시가" sap:VirtualizedContainerService.HintSize="338,208" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" TextString="[IO_STR_now]" Version="V3">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=001140&amp;oq=001140&amp;aqs=chrome..69i57j0i546l3.940j0j15&amp;sourceid=chrome&amp;ie=UTF-8" DesignTimeRectangle="238, 454, 114, 41" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'920.00'" FullSelectorArgument="&lt;webctrl aaname='920.00' parentid='knowledge-finance-wholepage__entity-summary' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='knowledge-finance-wholepage__entity-summary' tag='SPAN' type='' class='IsqQVc NprOob wT3VGc' /&gt;" Guid="cad517ce-2cb7-4b92-9a65-786560ec6306" InformativeScreenshot="c0c9665213f31e8c90d641e6aaca7eb1.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_STR_getcode+&quot; - Google 검색' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+                    </uix:NGetText.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NGetText>
+                  <uix:NGetAttribute sap2010:Annotation.AnnotationText="검색결과가 없을경우 다음 액티비티가 진행되도록 오류 발생 시 계속 진행을 'true'로 놓아줌" Attribute="visibleInnerText" DisplayName="Get Attribute_지난 1개월" sap:VirtualizedContainerService.HintSize="338,258" sap2010:WorkflowViewState.IdRef="NGetAttribute_1" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Version="V3">
+                    <uix:NGetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[IO_STR_1month]</OutArgument>
+                    </uix:NGetAttribute.Result>
+                    <uix:NGetAttribute.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=247540&amp;oq=&amp;aqs=chrome.0.35i39i362l8.2246356834j0j15&amp;sourceid=chrome&amp;ie=UTF-8" DesignTimeRectangle="36, 495, 231, 28" DesignTimeScaleFactor="1" FriendlyName="'-4,300.00 (-3.96%)오늘지난'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;g-card-section&amp;gt;div&amp;gt;g-card-section&amp;gt;div&amp;gt;div&amp;gt;span' idx='2' parentid='knowledge-finance-wholepage__entity-summary' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='WlRRw IsqQVc fw-price-dn' parentid='knowledge-finance-wholepage__entity-summary' tag='SPAN' aaname='' /&gt;" Guid="f62aeddd-596a-4f3e-b98f-9962e27c0026" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOsAAAAgCAYAAADzJY+iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAURSURBVHhe7Zhfjts4DMb3bD1Pr7EHKNAz9LmPO5dod2+wT50LTKdFu4C3JCWbokjrcxJ3ogF/gIEkpiX++T4lM38sSZJMQZo1SSYhzZokk5BmTZJJSLMmySSkWZNkEtKsyf3y+Xl58+fz8qm8PcaP5eP7p+Xd5/L2ZB4fvi5vPnzvXndwTU/mamv89OFpefvwo7zbOG5W3uzr8vFLeR8izYoSEkzM+2/LY7mzgcT0cMPqM0G+SIzH7jBWkPp7oJzMwLvB6vtdnpGIo89j/v73v3Ufeo1CYlzzc641h8isX74tb4f9PF4PQ3t6GuM9+1xr77UmQn1E9ZjPb2TW78s7TnIsbB6IKloGpBMtYl6Lsu8JJKZHBL/tZd8TSIwLJBSk/h7JQfWW9zK9LkZcRVhEtA1XZiT3pV/N4On5qH9gbZVLzdoQmYOIxA3lKbUfMmvpJfqFQDOt6/PsSl/164aoHvM5rXu1WUVwdA3MWopuG6VF9AtO0KzDz6nPkJgO2act1ooWifFAYn6B1N/h5VQGv4rH37+JMT3jmTWH3V7vYqF4vCazykFZ9A2Zte0lZFaCayr7rFdby/VmrY0zYoAxAm5FWGnFiMR0BGZu1kJiPILnIEz9HdHaWrDI/mY+jVnpXiSiit5vwC3Myj2P9oty4T6McsTNKjlILPcLMavJgddAzApwpVnVqW/EgGKb0IhoRRpcP0diOoIBN6JAYhz4PjJIh6EIds1aPl/zlnlUo7SD1d/g+mCj18jcRr8ANm5hVu5LpKdgTkfMWvND5zacU4HidN9HZpU6R5f0wa5dgczaiFSLB0AMIMloAXDyAyMiMR2IEZGYjsG+AVH9PTs/g0u/t7VUjixc8xzXJ3uu+dJnUO5SpycWy9VmLbk3eWqCOR0xK3LoaFhzI7M6++s5h/VoaI1gn8vNyokpc3IDcbNutGKcz6y+mXDGz3O9urermLVZ+97v501Qz+p9yUNE5T/j931Z/vrnZ3lufFHsCN6HBBtpates/Z7bRWudZdadQ7X0TL8OacyqZyLXBWaVgpsHLzZrKyrEiEhMx92adbS+wDXXoRkhh88PZkLP1bx1T3k9R5h7gkUMixjV5uzuGcwJ4wyzxtrjXuq+Rvq8gtWsIoSt4Zzw4AQ7KlzZQ5rvC6U9HJCYDvtLoNCshcR0eGbtT8Q9cej6UZpnIvHumpVyrM+YGoL1tKE99gyLG7XvVWeUgVkpPtbgrc1aZh30heeEmHX4q0Aury7wH0yKXWEUgpimEV6MNRES0+GZyhocibHIfejEROrviHPa9pQYK8C9Q4Du2brX5zlP+9yoD4JnWMiog/lxj2q9bn4bv8+s457AZgWI6jrHrFVk3Smpm2djyvumSCSmR8S75eiJGYmxcExoNg1Sfw8LReVgcyS6PMu6vpDInG1N2gx+Pf6B4KENCxn1KFeZ9TJ8s47hXiJmffFvVve0LIJdE7D3CRPjNmkQE5zUIur6nLc3FtMw/FbXjOr3TSGGrVcg1GLQekXG8sUs+4brDwxiIZOeYlTitZr1gvWJ42YNeHx4BkU8M2LAWwvknjjDABcDmFUfWu51oTGOcsisXp7d1dd9I7OSiPHTeGq42a+01nur7eC3/EsCm/UKbmNWGvIJyd0rZw3jZZFfDcjfqsnLcLOfwUmSnEuaNUkmIc2aJJOQZk2SSUizJskkpFmTZBLSrEkyCWnWJJmENGuSTEKaNUmmYFn+Bx5rn3K8yDdaAAAAAElFTkSuQmCC" InformativeScreenshot="d45dc0b63311d66020da2cd8b3bb4f0f.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_STR_getcode+&quot; - Google 검색' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+                    </uix:NGetAttribute.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NGetAttribute>
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{IO_STR_now}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:AddDataRow>
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{IO_STR_1month}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:AddDataRow>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[I_STR_getcode + &quot; 검색 완료&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="타겟이 나타나지 않음" sap:VirtualizedContainerService.HintSize="400,756" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;검색결과 없음&quot;]" />
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{&quot;x&quot;}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:AddDataRow>
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{&quot;x&quot;}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:AddDataRow>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=247540&amp;oq=&amp;aqs=chrome.0.35i39i362l8.2268756964j0j15&amp;sourceid=chrome&amp;ie=UTF-8" DesignTimeRectangle="356, 517, 36, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'1개월'" FullSelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' type='' class='' check:innerText='1개월' /&gt;" Guid="4104bfa1-ce13-42b3-a7a0-0ca5b140e254" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAaCAYAAADFTB7LAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD3SURBVFhH7ZMNDoMgDEZ3Ve5EPAgcAg/BGYw36OjEHxxIa1liMl7CMp0tj2/1BQ+nC0rpglL+RXAGN2hwU/g6OdCDC3eYeAsqU8cTxCZKJUuP2JIiiM+ktYkQT3BpZn28LDCPmizozXqYHazfpOiC+0lrgt5EKYlgKdFIIrgVGAu2KujDMzZ8InXB48GzQpQE59HFDXHza8H97/1cEQQr8GawIogSW3rIKZ1ko0xy52VCp3aCud84CR5How5TcLl/HnaqIL4o2QTXJUuwJI00mMFC3b0Z/OIRCV5BF6T3XCgIcmmUoIo9DjQS/B1dUEoXlNIFZQC8AYp8bj50q7D0AAAAAElFTkSuQmCC" InformativeScreenshot="b53af6a42b0929dcee5d9cfb6f74b7ab.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='247540 - Google 검색' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1912, -8, 1936, 1176" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="8a7eeb2aeb2e3e1b7c8698d06342dff6.png" Selector="&lt;html app='chrome.exe' title='새 탭' /&gt;" Url="[I_STR_configchrome(&quot;Chrome&quot;).ToString]" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
