@@ -2,15 +2,14 @@
   <x:Members>
     <x:Property Name="I_STR_configchrome" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="I_STR_getcode" Type="InArgument(x:String)" />
-    <x:Property Name="I_DT_output" Type="InArgument(sd:DataTable)" />
     <x:Property Name="IO_STR_now" Type="InOutArgument(x:String)" />
     <x:Property Name="IO_STR_1month" Type="InOutArgument(x:String)" />
-    <x:Property Name="IO_DT_output" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="IO_DT_output_1" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1108,2795</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1102,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>종목코드_조회_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
@@ -107,32 +106,23 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="종목코드_조회" sap:VirtualizedContainerService.HintSize="1012,2686" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="STR" />
-      <Variable x:TypeArguments="x:String" Name="STR_now" />
-      <Variable x:TypeArguments="x:String" Name="STR_1month" />
-    </Sequence.Variables>
+  <Sequence DisplayName="종목코드_조회" sap:VirtualizedContainerService.HintSize="496,469" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Config 파일에 있는 구글 url을 가져와 열어준다" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: 새 탭_구글 검색창" sap:VirtualizedContainerService.HintSize="950,2564" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Version="V2">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Config 파일에 있는 구글 url을 가져와 열어준다" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: 새 탭_구글 검색창" sap:VirtualizedContainerService.HintSize="434,347" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
           <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="916,2307" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="STR_1month_1" />
-              <Variable x:TypeArguments="x:String" Name="STR_1month_2" />
-              <Variable x:TypeArguments="x:String" Name="STR_1month_3" />
-            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'combo box'_종목코드 검색" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="854,227" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Text="[I_STR_getcode + &quot;[k(enter)]&quot;]" Version="V3">
@@ -141,9 +131,9 @@
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="854,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[I_STR_getcode + &quot;검색&quot;]" />
-            <uix:NCheckState DisplayName="Check App State '1개월'" sap:VirtualizedContainerService.HintSize="854,1776" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Timeout="2" Version="V3">
+            <uix:NCheckState DisplayName="Check App State '1개월'" sap:VirtualizedContainerService.HintSize="854,1777" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="7f6e53a1-b622-41c3-8a4e-86bc78ef6d5b" Timeout="2" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="타겟이 나타남" sap:VirtualizedContainerService.HintSize="400,1550" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="타겟이 나타남" sap:VirtualizedContainerService.HintSize="400,1551" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -182,14 +172,14 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NGetAttribute>
-                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{IO_STR_now}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{IO_STR_now}]" DataTable="[IO_DT_output_1]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:AddDataRow>
-                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{IO_STR_1month}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{IO_STR_1month}]" DataTable="[IO_DT_output_1]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -200,21 +190,21 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="타겟이 나타나지 않음" sap:VirtualizedContainerService.HintSize="400,756" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="타겟이 나타나지 않음" sap:VirtualizedContainerService.HintSize="400,757" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;검색결과 없음&quot;]" />
-                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{&quot;x&quot;}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_3">
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{&quot;x&quot;}]" DataTable="[IO_DT_output_1]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:AddDataRow>
-                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{&quot;x&quot;}]" DataTable="[IO_DT_output]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_4">
+                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="DT_output 데이터 테이블에 현재시가 추가" ArrayRow="[{&quot;x&quot;}]" DataTable="[IO_DT_output_1]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="AddDataRow_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -224,7 +214,7 @@
                 </Sequence>
               </uix:NCheckState.IfNotExists>
               <uix:NCheckState.Target>
-                <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=247540&amp;oq=&amp;aqs=chrome.0.35i39i362l8.2268756964j0j15&amp;sourceid=chrome&amp;ie=UTF-8" DesignTimeRectangle="356, 517, 36, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'1개월'" FullSelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' type='' class='' check:innerText='1개월' /&gt;" Guid="4104bfa1-ce13-42b3-a7a0-0ca5b140e254" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAaCAYAAADFTB7LAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD3SURBVFhH7ZMNDoMgDEZ3Ve5EPAgcAg/BGYw36OjEHxxIa1liMl7CMp0tj2/1BQ+nC0rpglL+RXAGN2hwU/g6OdCDC3eYeAsqU8cTxCZKJUuP2JIiiM+ktYkQT3BpZn28LDCPmizozXqYHazfpOiC+0lrgt5EKYlgKdFIIrgVGAu2KujDMzZ8InXB48GzQpQE59HFDXHza8H97/1cEQQr8GawIogSW3rIKZ1ko0xy52VCp3aCud84CR5How5TcLl/HnaqIL4o2QTXJUuwJI00mMFC3b0Z/OIRCV5BF6T3XCgIcmmUoIo9DjQS/B1dUEoXlNIFZQC8AYp8bj50q7D0AAAAAElFTkSuQmCC" InformativeScreenshot="b53af6a42b0929dcee5d9cfb6f74b7ab.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='247540 - Google 검색' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+                <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=247540&amp;oq=&amp;aqs=chrome.0.35i39i362l8.2268756964j0j15&amp;sourceid=chrome&amp;ie=UTF-8" DesignTimeRectangle="356, 517, 36, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'1개월'" FullSelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='1개월' parentid='knowledge-finance-wholepage__entity-summary' tag='DIV' type='' class='' check:innerText='1개월' /&gt;" Guid="4104bfa1-ce13-42b3-a7a0-0ca5b140e254" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAaCAYAAADFTB7LAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD3SURBVFhH7ZMNDoMgDEZ3Ve5EPAgcAg/BGYw36OjEHxxIa1liMl7CMp0tj2/1BQ+nC0rpglL+RXAGN2hwU/g6OdCDC3eYeAsqU8cTxCZKJUuP2JIiiM+ktYkQT3BpZn28LDCPmizozXqYHazfpOiC+0lrgt5EKYlgKdFIIrgVGAu2KujDMzZ8InXB48GzQpQE59HFDXHza8H97/1cEQQr8GawIogSW3rIKZ1ko0xy52VCp3aCud84CR5How5TcLl/HnaqIL4o2QTXJUuwJI00mMFC3b0Z/OIRCV5BF6T3XCgIcmmUoIo9DjQS/B1dUEoXlNIFZQC8AYp8bj50q7D0AAAAAElFTkSuQmCC" InformativeScreenshot="b53af6a42b0929dcee5d9cfb6f74b7ab.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_STR_getcode+&quot; - Google 검색' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
               </uix:NCheckState.Target>
             </uix:NCheckState>
           </Sequence>

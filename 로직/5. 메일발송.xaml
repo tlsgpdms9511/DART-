@@ -1,14 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="메일발송" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:uas="clr-namespace:UiPath.Activities.System;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <x:Members>
-    <x:Property Name="IO_STR_documnet" Type="InOutArgument(x:String)" />
-    <x:Property Name="IO_STR_datetime1" Type="InOutArgument(x:String)" />
-    <x:Property Name="IO_STR_filename" Type="InOutArgument(x:String)" />
-  </x:Members>
-  <VisualBasic.Settings>
-    <x:Null />
-  </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1108,1060</sap:VirtualizedContainerService.HintSize>
-  <sap2010:WorkflowViewState.IdRef>메일발송_1</sap2010:WorkflowViewState.IdRef>
+<Activity mc:Ignorable="sap sap2010" x:Class="메일발송" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,1076" sap2010:WorkflowViewState.IdRef="메일발송_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:uas="clr-namespace:UiPath.Activities.System;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
       <x:String>System.Activities</x:String>
@@ -84,15 +74,13 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="메일발송" sap:VirtualizedContainerService.HintSize="493,995" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="메일발송" sap:VirtualizedContainerService.HintSize="494,1011.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:PasswordCredentials" Name="OUTLOOK_SHE" />
       <Variable x:TypeArguments="x:String" Name="STR_title" />
       <Variable x:TypeArguments="x:String" Name="STR_content" />
       <Variable x:TypeArguments="x:String" Name="STR_to" />
-      <Variable x:TypeArguments="snm:Attachment" Name="ATTATCH" />
       <Variable x:TypeArguments="x:String" Name="DATETIME_now" />
-      <Variable x:TypeArguments="x:String" Name="STR_filename" />
       <Variable x:TypeArguments="x:String" Name="DOCUMENT" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -100,8 +88,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uas:GetUsernamePasswordX CredentialName="{x:Null}" TimeoutInSeconds="{x:Null}" AutosubmitTimeoutSeconds="10" Credential="[OUTLOOK_SHE]" CredentialsSource="Orchestrator" DisplayName="Get Username/Password" sap:VirtualizedContainerService.HintSize="431,180" sap2010:WorkflowViewState.IdRef="GetUsernamePasswordX_1" OrchestratorCredentialName="OUTLOOK_SHE" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,203" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <uas:GetUsernamePasswordX CredentialName="{x:Null}" TimeoutInSeconds="{x:Null}" AutosubmitTimeoutSeconds="10" Credential="[OUTLOOK_SHE]" CredentialsSource="Orchestrator" DisplayName="Get Username/Password" sap:VirtualizedContainerService.HintSize="432,184" sap2010:WorkflowViewState.IdRef="GetUsernamePasswordX_1" OrchestratorCredentialName="OUTLOOK_SHE" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="432,201.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -139,8 +127,8 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[DOCUMENT]" sap:VirtualizedContainerService.HintSize="431,71" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="MyDocuments" />
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[STR_content]" DisplayName="Send SMTP Mail Message" Email="[OUTLOOK_SHE.Username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="431,158" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="True" Password="[OUTLOOK_SHE.Password]" Port="587" SecureConnection="Auto" Server="smtp-mail.outlook.com" Subject="[STR_title]" To="[STR_to]">
+    <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[DOCUMENT]" sap:VirtualizedContainerService.HintSize="432,72.66666666666667" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="MyDocuments" />
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[STR_content]" DisplayName="Send SMTP Mail Message" Email="[OUTLOOK_SHE.Username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="432,166.66666666666666" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="True" Password="[OUTLOOK_SHE.Password]" Port="587" SecureConnection="Auto" Server="smtp-mail.outlook.com" Subject="[STR_title]" To="[STR_to]">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">
@@ -149,6 +137,6 @@
         </scg:List>
       </ui:SendMail.Files>
     </ui:SendMail>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;메일 발송 완료&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="432,104.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;메일 발송 완료&quot;]" />
   </Sequence>
 </Activity>
